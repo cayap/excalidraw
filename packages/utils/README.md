@@ -97,3 +97,11 @@ console.log(svg.outerHTML);
   console.log(urlCreator.createObjectURL(blob));
 })();
 ```
+
+## AI / scripted scene editing
+
+Pure helpers for agents and scripts that edit scene data (no LLM calls):
+
+- `summarizeScene(elements)` – compact, prompt-friendly overview (ids, bounds, text, labels, arrow connections).
+- `queryElements(elements, { type, text, groupId, frameId, ids })` – find live elements.
+- `applySceneEdits(elements, edits)` – batch `add` (skeleton format), `update`, `delete` edits; returns new elements plus `added`/`updated`/`deleted` ids and per-edit `errors` so a failed edit can be retried.

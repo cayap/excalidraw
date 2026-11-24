@@ -14,3 +14,12 @@ export type {
 export { elementsOverlappingBBox } from "@excalidraw/element";
 export { getCommonBounds } from "@excalidraw/element";
 export type { RenderEnvironment } from "@excalidraw/element";
+
+export { summarizeScene, queryElements, applySceneEdits } from "./ai-scene";
+export type {
+  SceneSummary,
+  SceneElementSummary,
+  SceneQuery,
+  SceneEdit,
+  ApplySceneEditsResult,
+} from "./ai-scene";
