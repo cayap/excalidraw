@@ -141,6 +141,7 @@ import DebugCanvas, {
   isVisualDebuggerEnabled,
   loadSavedDebugState,
 } from "./components/DebugCanvas";
+import { installAiDevTools } from "./aiDevTools";
 import { useSimulatedCollaborators } from "./debugCollaborators";
 import { AIComponents } from "./components/AI";
 import { ExcalidrawPlusIframeExport } from "./ExcalidrawPlusIframeExport";
@@ -472,6 +473,13 @@ const ExcalidrawWrapper = () => {
   // collaborators for exercising avatar/UserList UI without a real
   // collab room
   useSimulatedCollaborators(excalidrawAPI);
+
+  // dev only: `window.aiScene.summarize() / query() / apply()` in the console
+  useEffect(() => {
+    if (import.meta.env.DEV && excalidrawAPI) {
+      return installAiDevTools(excalidrawAPI);
+    }
+  }, [excalidrawAPI]);
 
   // ---------------------------------------------------------------------------
   // Hoisted loadImages
